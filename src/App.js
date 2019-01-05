@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MozaiGrid rows={2} cols={3} data={DATA} style={{height:400, width:'100%', backgroundColor:'lightblue'}} cellOrganisation={CellOrganisation.COLUMN}/>
+        <MozaiGrid rows={2} cols={4} data={DATA} style={{height:400, width:'100%', backgroundColor:'lightblue'}} cellOrganisation={CellOrganisation.COLUMN}/>
       </div>
     );
   }
