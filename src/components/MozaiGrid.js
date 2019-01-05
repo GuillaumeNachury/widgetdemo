@@ -8,16 +8,9 @@ import MozaiCell from './MozaiCell';
 
 class MozaiGrid extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state={
-            currentPage:0
-        }
-    }
+   
 
-    componentDidMount(){
-        setTimeout(()=>this.setState({currentPage:this.state.currentPage+1}), 2000);
-    }
+  
 
     _findCellSize(){
         return {width : this.props.parentWidth / this.props.cols, height : this.props.parentHeight / this.props.rows}
@@ -35,11 +28,11 @@ class MozaiGrid extends React.Component{
                     height:this.props.parentHeight,
                 }}>
                     <div style={{display:'flex', flexWrap:'wrap', 
-                        transition:'all 100ms cubic-bezier(0.22, 0.61, 0.36, 1) 0s',
+                        transition:'all 200ms cubic-bezier(0.22, 0.61, 0.36, 1) 0s',
                         flexDirection:this.props.cellOrganisation,
                         width:cellSize.width * _maxCol,
                         height:this.props.parentHeight,
-                        transform : `translate(${this.state.currentPage*-(cellSize.width)}px)`
+                        transform : `translate(${this.props.currentSnap*-(cellSize.width)}px)`
 
                     }}>
                     {
@@ -60,8 +53,13 @@ export const CellOrganisation = {
 
 MozaiGrid.propTypes={
     cols:PropTypes.number,
-    rows:PropTypes.number
+    rows:PropTypes.number,
+    currentSnap:PropTypes.number
 }
+
+MozaiGrid.defaultProps = {
+    currentSnap: 0
+  };
 
 
 export default Resizer(MozaiGrid);
