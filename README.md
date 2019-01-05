@@ -1,9 +1,9 @@
 # widgetdemo
 
 ## TODOS
-- [ ] Create Grid Component
-- [ ] Progress bar feature
-- [ ] External scroll control
+- [x] Create Grid Component
+- [x] Progress bar feature
+- [x] External scroll control
 - [ ] Query string to control UI
 - [ ] Manage cell types
 - [ ] hover effect on grid cells
