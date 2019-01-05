@@ -2,8 +2,11 @@ import React from 'react';
 
 class MozaiCell extends React.Component{
 
+    _randomColor(){
+        return 'hsl('+(this.props.id*10)+', 50%, 57%)';
+    }
     render(){
-        return <div style={{...this.props.style, boxSizing:'border-box', border:'1px solid'}}>
+        return <div style={{...this.props.style, boxSizing:'border-box', backgroundColor:this._randomColor()}}>
         {
             this.props.id
         }

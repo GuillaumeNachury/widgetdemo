@@ -41,9 +41,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MozaiGrid rows={2} cols={4} 
+        <MozaiGrid rows={3} cols={4} 
         currentSnap={this.state.currentSnap}
-        data={DATA} style={{height:400, width:'100%', backgroundColor:'lightblue'}} cellOrganisation={CellOrganisation.COLUMN}/>
+        data={DATA} 
+        style={{height:500, width:'50%', backgroundColor:'lightblue'}} 
+        cellOrganisation={CellOrganisation.COLUMN}
+        showProgressBar = {true}
+        />
         <button onClick={()=>this._snapTo()}>Previous</button>
         <button onClick={()=>this._snapTo(false)}>Next</button>
       </div>
