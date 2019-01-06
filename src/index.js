@@ -10,8 +10,17 @@ import * as serviceWorker from './serviceWorker';
 
 import AppStore from './reducers';
 import AsyncDispatchMiddleware from './middlewares';
+import {extractParams} from './utils/URLParser';
+import {setCompanyGridParams} from './actions';
 
 const store = createStore(AppStore, applyMiddleware(AsyncDispatchMiddleware));
+
+/**
+ * Try to get company widget params (i.e. cwcols & cwrows ) from the URL
+ * ?cwcols=4&cwrows=2
+ */
+const cwParams = extractParams(["cwcols", "cwrows"]);
+store.dispatch(setCompanyGridParams({cols:Number(cwParams.cwcols), rows:Number(cwParams.cwrows)}));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

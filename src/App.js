@@ -23,13 +23,12 @@ class App extends Component {
     else{
       this.props.requestCompanyGridScrollNext();
     }
-    //this.setState({currentSnap:this.state.currentSnap + (prev ?  -1:1)})
   }
 
   render() {
     return (
       <div className="App">
-        <GridWidget style={{height:500, width:'50%', backgroundColor:'lightblue'}}/>
+        <GridWidget style={{height:450, width:'50%', backgroundColor:'lightblue'}}/>
         <button onClick={()=>this._snapTo()}>Previous</button>
         <button onClick={()=>this._snapTo(false)}>Next</button>
       </div>

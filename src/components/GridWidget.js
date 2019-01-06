@@ -10,9 +10,11 @@ import MozaiGrid, {CellOrganisation} from './MozaiGrid';
 class GridWidget extends React.Component{
 
     render(){
-        return  <MozaiGrid rows={3} cols={4} 
-                    currentSnap={this.props.snapPosition}
-                    data={this.props.companyData} 
+        const {companyData,snapPosition, gridParams } = this.props;
+
+        return  <MozaiGrid rows={gridParams.rows} cols={gridParams.cols} 
+                    currentSnap={snapPosition}
+                    data={companyData} 
                     style={{...this.props.style}} 
                     cellOrganisation={CellOrganisation.COLUMN}
                     showProgressBar = {true}
@@ -26,7 +28,8 @@ class GridWidget extends React.Component{
 function mapStateToProps(store, ownProps){
     return {
         companyData : store.appContent.companyData,
-        snapPosition:store.appContent.companyGridSnapPosition
+        snapPosition:store.appContent.companyGridSnapPosition,
+        gridParams:store.appContent.companyGridParams
     }
   }
 

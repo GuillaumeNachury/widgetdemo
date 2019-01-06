@@ -86,8 +86,11 @@ class MozaiGrid extends React.Component{
     _buildCells(cellSize){
         return this.props.data.map((entry,idx) =>  <MozaiCell key={'cell'+idx} id={idx} style={{...cellSize, display:"flex"}} />);
     }
-
-    render(){
+    
+    /**
+     * Render the grid
+     */
+    renderGrid(){
         const cellSize = this._findCellSize();
         const _maxCol = Math.ceil(this.props.data.length / this.props.rows);
        
@@ -112,6 +115,35 @@ class MozaiGrid extends React.Component{
                         this.props.showProgressBar && <MozaiProgressBar percent={ this._findPercentDisplayed()} />
                     }
                 </div>
+    }
+
+    /**
+     * Render a place holder while waiting for the data to load 
+     * or the cols / rows counts to get computed
+     */
+    renderPlaceHolder(msg){
+        return <div style={{display:'flex',
+                flexDirection:'column',
+                justifyContent:'center',
+                alignItems:'center',
+                width:this.props.parentWidth,
+                height:this.props.parentHeight,
+                }}>
+                   {msg}
+                </div>
+    }
+
+    render(){
+        const {cols, rows, data} = this.props;
+        if(cols === undefined || rows === undefined){
+            return this.renderPlaceHolder("Missing params")
+        }
+        else if(data === undefined || data.length === 0){
+            return this.renderPlaceHolder("Loading data...")
+        }
+        else{
+            return this.renderGrid();
+        }
     }
 
 }
