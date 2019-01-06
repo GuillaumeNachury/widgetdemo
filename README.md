@@ -4,10 +4,10 @@
 - [x] Create Grid Component
 - [x] Progress bar feature
 - [x] External scroll control
-- [ ] Query string to control UI
+- [x] Query string to control UI
 - [ ] Manage cell types
 - [ ] hover effect on grid cells
-- [ ] setup Redux
+- [x] setup Redux
 - [ ] Load remote data
 - [ ] Add mobile mod
 - [ ] Setup style
