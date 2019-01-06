@@ -1,3 +1,6 @@
+/**
+ * Base component for the grid cells
+ */
 import React from 'react';
 
 class MozaiCell extends React.Component{

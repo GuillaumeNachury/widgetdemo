@@ -1,0 +1,140 @@
+/**
+ * Main Mozaic / Grid component.
+ * 
+ * Use 'cols' and 'rows' props to define the shape of the grid
+ * 
+ * Cells can be arranged (cf. 'cellOrganisation' prop )by column or row e.g. :
+ *  by Row : 
+ *  1 2 3 4
+ *  5 6 7 8
+ * 
+ * by Column :
+ * 1 3 5 7
+ * 2 4 5 6
+ * 
+ * To scroll the component (move to next or previous column) use the 
+ * 'currentSnap' prop
+ * 
+ * Basically it's composed of
+ * +---------------------------------------------------------+
+ * | An hidden hidden parent in charge of detecting resize   |
+ * | so the compoenent can be responsive / fluid (1)         |
+ * |                                                         |
+ * | +-----------------------------------------------------+ |
+ * | | A Viewport that show a limited part of the grid     | |
+ * | | based on the component desired size. (2)            | |
+ * | |                                                     | |
+ * | |  +------------------------------------------------+ | |
+ * | |  | An Animated (on the x axis) container which    | | | 
+ * | |  | contains all the cells (3)                     | | |
+ * | |  |                                                | | |
+ * | |  | +---(4)----+  +---(4)----+  +---(4)----+       | | |
+ * | |  | | Cell 1   |  | Cell 2   |  |  Cell n  |       | | |
+ * | |  | +----------+  +----------+  +----------+       | | |
+ * | |  +------------------------------------------------+ | |
+ * | +-----------------------------------------------------+ |
+ * +---------------------------------------------------------+
+ *  
+ *  The component can also display a progress bar (cf. MozaiProgress.js) at the bottom
+ *  via the 'showProgressBar' prop
+ * 
+ * 
+ * (1) cf. : Rezier.js
+ * (2) Main root div in MozaiGrid.js
+ * (3) Simple div   
+ * (4) cf. : MozaiCell.js  
+ *          
+ * @author Guillaume Nachury
+ */
+
+ import React from 'react';
+import PropTypes from 'prop-types';
+import Resizer from './Resizer';
+
+import MozaiCell from './MozaiCell';
+import MozaiProgressBar, {MozaiProgressSize} from './MozaiProgress';
+
+
+class MozaiGrid extends React.Component{
+
+    /**
+     * Helper function that calculate the size of a grid cell
+     * based on the parent size and some parameters
+     */
+    _findCellSize(){
+        const _computedHeight = this.props.parentHeight-(this.props.showProgressBar ? MozaiProgressSize.height:0)
+        return {width : this.props.parentWidth / this.props.cols, height : _computedHeight / this.props.rows}
+    }
+
+    
+    /**
+     * Helper function that calculates the percent of cells displayed / scrolled
+     */
+    _findPercentDisplayed(){
+        const nbOutsideLeft = this.props.currentSnap*this.props.rows;
+        const nbDisplayed = this.props.rows*this.props.cols;
+
+        const percent = (((nbDisplayed + nbOutsideLeft) / this.props.data.length)*100)>>0;
+
+        return (Math.min(Math.max(percent,0),100)); // limits trick to get percent value between 0 and 100
+    }
+
+    /**
+     * Method that build all the cells for the grid component
+     * @param {*} cellSize Cell size descriptor
+     */
+    _buildCells(cellSize){
+        return this.props.data.map((entry,idx) =>  <MozaiCell key={'cell'+idx} id={idx} style={{...cellSize, display:"flex"}} />);
+    }
+
+    render(){
+        const cellSize = this._findCellSize();
+        const _maxCol = Math.ceil(this.props.data.length / this.props.rows);
+       
+        return <div style={{overflow:"hidden", display:'flex',
+                    flexDirection:'column',
+                    width:this.props.parentWidth,
+                    height:this.props.parentHeight,
+                }}>
+                    <div style={{display:'flex', flexWrap:'wrap', 
+                        transition:'all 300ms ease-in-out 0s',
+                        flexDirection:this.props.cellOrganisation,
+                        width:cellSize.width * _maxCol,
+                        height:this.props.parentHeight,
+                        transform : `translate(${this.props.currentSnap*-(cellSize.width)}px)`
+
+                    }}>
+                    {
+                        this._buildCells(cellSize)
+                    }
+                    </div>
+                    {
+                        this.props.showProgressBar && <MozaiProgressBar percent={ this._findPercentDisplayed()} />
+                    }
+                </div>
+    }
+
+}
+
+export const CellOrganisation = {
+    COLUMN:'column',
+    ROW:'row'
+
+}
+
+MozaiGrid.propTypes={
+    cols:PropTypes.number,
+    rows:PropTypes.number,
+    currentSnap:PropTypes.number,
+    data:PropTypes.array.isRequired,
+    cellOrganisation:PropTypes.oneOf([CellOrganisation.COLUMN, CellOrganisation.ROW]),
+    showProgressBar:PropTypes.bool
+}
+
+MozaiGrid.defaultProps = {
+    currentSnap: 0,
+    cellOrganisation:CellOrganisation.COLUMN
+  };
+
+
+export default Resizer(MozaiGrid);

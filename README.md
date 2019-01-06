@@ -13,3 +13,4 @@
 - [ ] Setup style
 - [ ] Create some unit tests
 - [ ] Clean / comment the code 
+- [ ] Try to finds a better name for the grid component :)

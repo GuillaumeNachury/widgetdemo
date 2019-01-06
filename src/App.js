@@ -1,29 +1,11 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
 import './App.css';
 
-import MozaiGrid, {CellOrganisation} from './components/MozaiGrid';
+import GridWidget from './components/GridWidget';
+import {requestCompanyGridScrollPrevious, requestCompanyGridScrollNext} from './actions';
 
-const DATA = [
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-  {name:'aaa'},
-]
 
 class App extends Component {
 
@@ -35,19 +17,19 @@ class App extends Component {
   }
 
   _snapTo(prev=true){
-    this.setState({currentSnap:this.state.currentSnap + (prev ?  -1:1)})
+    if(prev){
+      this.props.requestCompanyGridScrollPrevious();
+    }
+    else{
+      this.props.requestCompanyGridScrollNext();
+    }
+    //this.setState({currentSnap:this.state.currentSnap + (prev ?  -1:1)})
   }
 
   render() {
     return (
       <div className="App">
-        <MozaiGrid rows={3} cols={4} 
-        currentSnap={this.state.currentSnap}
-        data={DATA} 
-        style={{height:500, width:'50%', backgroundColor:'lightblue'}} 
-        cellOrganisation={CellOrganisation.COLUMN}
-        showProgressBar = {true}
-        />
+        <GridWidget style={{height:500, width:'50%', backgroundColor:'lightblue'}}/>
         <button onClick={()=>this._snapTo()}>Previous</button>
         <button onClick={()=>this._snapTo(false)}>Next</button>
       </div>
@@ -55,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(undefined, {requestCompanyGridScrollPrevious,requestCompanyGridScrollNext})(App)

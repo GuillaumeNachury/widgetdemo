@@ -1,5 +1,5 @@
 /**
- * HOC to help resizing when the user
+ * HOC to help resizing (=> get a fluid component) when the user
  * resizes the window
  * 
  * @author Guillaume Nachury
