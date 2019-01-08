@@ -11,7 +11,7 @@
 - [x] Load remote data
 - [x] Add mobile mod
 - [x] Setup style
-- [ ] Add autoscroll feature
+- [x] Add autoscroll feature
 - [ ] Create some unit tests
 - [ ] Clean / comment the code 
 - [ ] Try to finds a better name for the grid component :)
