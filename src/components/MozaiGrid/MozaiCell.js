@@ -3,6 +3,10 @@
  */
 import React from 'react';
 
+import { Icon } from 'react-icons-kit';
+import {ic_play_arrow} from 'react-icons-kit/md/ic_play_arrow';
+import {ic_search} from 'react-icons-kit/md/ic_search';
+
 import './style.css'
 
 const CELL_TYPES = {
@@ -13,41 +17,60 @@ const CELL_TYPES = {
 
 class MozaiCell extends React.Component{
 
-    _randomColor(){
-        return 'hsl('+(this.props.id*10)+', 50%, 57%)';
-    }
-
-    _generateThumb(src){
-        return <div className="cellThumb" style={{
-            ...this.props.style,
-            backgroundRepeat:'no-repeat',
-            backgroundPosition:'50% 50%',
-            backgroundSize:'cover',
-            backgroundImage:`url(${src})`
-        }}></div>
-    }
+ 
+  
 
     _renderImageCell(){
-        return <div style={{...this.props.style, boxSizing:'border-box',overflow:'hidden'}}>
-        {
-            this._generateThumb(this.props.data.srcThumb)
-        }
+        return <div style={{...this.props.style, boxSizing:'border-box', position:'relative', overflow:'hidden'}} className='Cell'>
+                <div className="cellThumb" style={{
+                            ...this.props.style,
+                            backgroundImage:`url(${this.props.data.srcThumb})`
+                        }}>
+                
+                
+                </div>
+                {
+                    this.props.data.caption && <div className="ThumbCaption">{this.props.data.caption}</div>
+                }  
+                <div style={{
+                            ...this.props.style
+                        }}
+                        className="ImageCellHover">
+                    <Icon icon={ic_search} size={30}/>
+                </div>
         </div>
     }
 
     _renderQuoteCell(){
-        return <div style={{...this.props.style, boxSizing:'border-box', backgroundColor:"#373942"}}>
-        {
-            this.props.data.type
-        }
+        return <div style={{...this.props.style, boxSizing:'border-box',
+                        display:"flex",
+                        flexDirection:"column",
+                        alignItems:"center", justifyContent:"center",
+                        padding:20,textAlign:"center",
+                        color:"#FFF",
+                        backgroundColor:"#373942"}}>
+                        <span className='Quote' />
+                    {
+                        this.props.data.txt
+                    }
+        
         </div>
     }
 
     _renderVideoCell(){
-        return <div style={{...this.props.style, boxSizing:'border-box', overflow:'hidden'}}>
-         {
-            this._generateThumb(this.props.data.srcThumb)
-        }
+        return <div style={{...this.props.style, boxSizing:'border-box', overflow:'hidden',  position:'relative',}}>
+                <div className="cellThumb" style={{
+                            ...this.props.style,
+                            backgroundImage:`url(${this.props.data.srcThumb})`
+                        }}>
+                        
+                
+                </div>
+                {
+                    this.props.data.caption && <div className="ThumbCaption">
+                    <div className="VideoPlay"><Icon icon={ic_play_arrow} /></div>
+                    {this.props.data.caption}</div>
+                }  
         </div>
     }
 

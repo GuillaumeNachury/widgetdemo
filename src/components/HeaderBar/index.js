@@ -20,7 +20,11 @@ class HeaderBar extends React.Component{
     render(){
         return(
             <div className="HeaderBar">
+            <div className="HeaderBrand">
                 <div className="Logo">WD</div>
+                <span>Simple demo of the widget</span>
+            </div>
+                
                 <div className="ButtonHolder">
                     <span className="NavButton" onClick={()=>this._snapTo()} >🡐</span>
                     <span className="NavButton" onClick={()=>this._snapTo(false)}>🡒</span>

@@ -5,7 +5,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-   box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+.HeaderBrand{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .Logo{
@@ -16,6 +26,7 @@
     height:30px;
     background: #00c29a;
     margin-left:5px;
+    margin-right: 10px;
 }
 
 .ButtonHolder{
