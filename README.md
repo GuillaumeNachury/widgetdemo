@@ -9,8 +9,9 @@
 - [x] hover effect on grid cells
 - [x] setup Redux
 - [x] Load remote data
-- [ ] Add mobile mod
+- [x] Add mobile mod
 - [x] Setup style
+- [ ] Add autoscroll feature
 - [ ] Create some unit tests
 - [ ] Clean / comment the code 
 - [ ] Try to finds a better name for the grid component :)
