@@ -6,8 +6,13 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 import MozaiGrid, {CellOrganisation} from './MozaiGrid';
+import {getCompanyData} from './../actions' ;
 
 class GridWidget extends React.Component{
+
+    componentDidMount(){
+        this.props.getCompanyData();
+    }
 
     render(){
         const {companyData,snapPosition, gridParams } = this.props;
@@ -33,4 +38,4 @@ function mapStateToProps(store, ownProps){
     }
   }
 
-export default connect(mapStateToProps, {})(GridWidget);
+export default connect(mapStateToProps, {getCompanyData})(GridWidget);

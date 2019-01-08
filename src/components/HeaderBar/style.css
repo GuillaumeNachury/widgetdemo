@@ -1,0 +1,46 @@
+.HeaderBar{
+    width: 100%;
+    height:40px;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   box-sizing: border-box;
+}
+
+.Logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:30px;
+    height:30px;
+    background: #00c29a;
+    margin-left:5px;
+}
+
+.ButtonHolder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:5px;
+}
+
+
+.NavButton{
+    cursor: pointer;
+    background-color: #4b4d55;
+    padding:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    transition: all 500ms;
+}
+.NavButton:hover{
+    background-color: #72747a;
+}
+.NavButton:first-child{
+    margin-right: 5px;
+}

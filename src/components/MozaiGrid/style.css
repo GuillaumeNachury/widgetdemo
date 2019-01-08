@@ -1,0 +1,16 @@
+.cellThumb{
+    cursor: pointer;
+    filter:grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%); 
+    -o-filter: grayscale(100%); 
+    transition: all 1200ms;
+}
+
+.cellThumb:hover{
+    transform: scale(1.05);
+    filter:grayscale(0);
+    -webkit-filter: grayscale(0);
+    -moz-filter: grayscale(0); 
+    -o-filter: grayscale(0); 
+}

@@ -71,12 +71,11 @@ class MozaiGrid extends React.Component{
      * Helper function that calculates the percent of cells displayed / scrolled
      */
     _findPercentDisplayed(){
-        const nbOutsideLeft = this.props.currentSnap*this.props.rows;
-        const nbDisplayed = this.props.rows*this.props.cols;
+        
 
-        const percent = (((nbDisplayed + nbOutsideLeft) / this.props.data.length)*100)>>0;
+        return LayoutUtil_getPercentDisplayed(this.props.currentSnap,this.props.rows, this.props.cols, this.props.data.length);
 
-        return (Math.min(Math.max(percent,0),100)); // limits trick to get percent value between 0 and 100
+       
     }
 
     /**
@@ -84,7 +83,9 @@ class MozaiGrid extends React.Component{
      * @param {*} cellSize Cell size descriptor
      */
     _buildCells(cellSize){
-        return this.props.data.map((entry,idx) =>  <MozaiCell key={'cell'+idx} id={idx} style={{...cellSize, display:"flex"}} />);
+        return this.props.data.map((entry,idx) =>  
+                    <MozaiCell key={'cell'+idx} id={idx} style={{...cellSize, display:"flex"}} data={entry}/>
+                    );
     }
     
     /**
@@ -100,7 +101,7 @@ class MozaiGrid extends React.Component{
                     height:this.props.parentHeight,
                 }}>
                     <div style={{display:'flex', flexWrap:'wrap', 
-                        transition:'all 300ms ease-in-out 0s',
+                        transition:'all 200ms ease-in-out 0s',
                         flexDirection:this.props.cellOrganisation,
                         width:cellSize.width * _maxCol,
                         height:this.props.parentHeight,
@@ -135,7 +136,7 @@ class MozaiGrid extends React.Component{
 
     render(){
         const {cols, rows, data} = this.props;
-        if(cols === undefined || rows === undefined){
+        if(isNaN(cols)|| isNaN(rows)){
             return this.renderPlaceHolder("Missing params")
         }
         else if(data === undefined || data.length === 0){
@@ -170,3 +171,12 @@ MozaiGrid.defaultProps = {
 
 
 export default Resizer(MozaiGrid);
+
+
+export const LayoutUtil_getPercentDisplayed = (currentSnap, rows, cols, dataLength)=>{
+        const nbOutsideLeft = currentSnap*rows;
+        const nbDisplayed = rows*cols;
+        const percent = (((nbDisplayed + nbOutsideLeft) / dataLength)*100)>>0;
+
+        return (Math.min(Math.max(percent,0),100)); // limits trick to get percent value between 0 and 100
+}

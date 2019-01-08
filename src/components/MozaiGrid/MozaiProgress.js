@@ -10,9 +10,9 @@ import React from 'react';
 class MozaiProgress extends React.Component{
 
     render(){
-        return <div style={{height:MozaiProgressSize.height}}>
-                    <div style={{backgroundColor:'green', 
-                        transition:'all 300ms ease-in-out 0s',
+        return <div style={{height:MozaiProgressSize.height, backgroundColor:'#4b4d55'}}>
+                    <div style={{backgroundColor:'#00c29a', 
+                        transition:'all 200ms ease-in-out 0s',
                         height:MozaiProgressSize.height, 
                         width:`${this.props.percent}%`}}></div>
                 </div>
