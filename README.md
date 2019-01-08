@@ -41,7 +41,7 @@ Pour réaliser un build final :
 
 
 ### Dépendances
-J'ai essayé de réduire au maximum les dépendances externes mais pour des questions de simplification certaines pourrons facilement etre enlevées à l'avenir. Notamment `react-icons-kit` utilisée ici que pour 3 icons :(
+J'ai essayé de réduire au maximum les dépendances externes mais certaines ont été utilisées uniquement pour des questions de simplification du dev. Elles pourrons facilement etre enlevées à l'avenir. Je pense notamment à `react-icons-kit` utilisée ici que pour 3 icons :(
 
 
 
