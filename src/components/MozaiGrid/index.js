@@ -72,11 +72,7 @@ class MozaiGrid extends React.Component{
      * Helper function that calculates the percent of cells displayed / scrolled
      */
     _findPercentDisplayed(){
-        
-
-        return LayoutUtil_getPercentDisplayed(this.props.currentSnap,this.props.rows, this.props.cols, this.props.data.length);
-
-       
+        return LayoutUtil_getPercentDisplayed(this.props.currentSnap,this.props.rows, this.props.cols, this.props.data.length); 
     }
 
     /**

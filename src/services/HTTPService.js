@@ -13,7 +13,7 @@
   * @param {*} dataType the data (json structure) you want to retrieve from the server
   */
  export const grabData = dataType=>new Promise((res,rej)=>{
-    fetch(`${SERVER.url}:${SERVER.port}${SERVER.api_base}/data/${dataType}`).then(
+    fetch(`${SERVER.url}${SERVER.port}${SERVER.api_base}/data/${dataType}`).then(
         resp=>{
             if(resp.status === 200) return resp.json();
             else rej();

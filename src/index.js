@@ -30,7 +30,7 @@ if(isMobile()) {
     cwParams.cwcols = 1;
     cwParams.cwrows = 1;
 }
-else if(isNaN(cwParams.cwcols) || isNaN(cwParams.cwrows)){
+else if(cwParams.cwcols === undefined|| cwParams.cwrows === undefined){
     cwParams.cwcols = 3;
     cwParams.cwrows = 2;
 }
