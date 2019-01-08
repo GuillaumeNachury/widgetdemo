@@ -9,12 +9,26 @@ import MozaiGrid, {CellOrganisation} from './MozaiGrid';
 import {getCompanyData} from './../actions' ;
 
 import {mobileDetector} from '../utils/MobileDetector';
+import Automator from '../utils/ActionAutomator';
+import {ACTION_TYPES} from "../actions";
 
 class GridWidget extends React.Component{
 
     componentDidMount(){
         this.props.getCompanyData();
+        if(this.props.autoScroll){
+            Automator.start(ACTION_TYPES.AUTO_SCROLL_COMPANY, this.props.autoScrollInterval ||5000)
+        }
     }
+
+    _stopAutoScroll(){
+        Automator.stop(ACTION_TYPES.AUTO_SCROLL_COMPANY);
+    }
+
+    _restartAutoScroll(){
+        Automator.start(ACTION_TYPES.AUTO_SCROLL_COMPANY, this.props.autoScrollInterval ||5000)
+    }
+
 
     render(){
         const {companyData,snapPosition, gridParams } = this.props;
@@ -26,6 +40,8 @@ class GridWidget extends React.Component{
                     cellOrganisation={CellOrganisation.COLUMN}
                     showProgressBar = {true}
                     isMobile = {this.props.isMobile}
+                    onMouseEnter={()=>this._stopAutoScroll()}
+                    onMouseLeave={()=>this._restartAutoScroll()}
                     />
                 }
 

@@ -13,9 +13,10 @@ import AsyncDispatchMiddleware from './middlewares';
 import {extractParams} from './utils/URLParser';
 import {setCompanyGridParams} from './actions';
 import {isMobile} from './utils/MobileDetector';
+import Automator from './utils/ActionAutomator';
 
 const store = createStore(AppStore, applyMiddleware(AsyncDispatchMiddleware));
-
+Automator.init(store);
 /**
  * Try to get company widget params (i.e. cwcols & cwrows ) from the URL
  * ?cwcols=4&cwrows=2

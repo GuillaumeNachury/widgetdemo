@@ -95,12 +95,17 @@ class MozaiGrid extends React.Component{
     renderGrid(){
         const cellSize = this._findCellSize();
         const _maxCol = Math.ceil(this.props.data.length / this.props.rows);
-       
+        const {onMouseEnter, onMouseLeave} = this.props;
+
         return <div style={{overflow:"hidden", display:'flex',
                     flexDirection:'column',
                     width:this.props.parentWidth,
                     height:this.props.parentHeight,
-                }}>
+                }}
+                
+                onMouseEnter={()=>onMouseEnter()}
+                onMouseLeave={()=>onMouseLeave()}
+                >
                     <div style={{display:'flex', flexWrap:'wrap', 
                         transition:'all 200ms ease-in-out 0s',
                         flexDirection:this.props.cellOrganisation,
@@ -124,13 +129,15 @@ class MozaiGrid extends React.Component{
      * or the cols / rows counts to get computed
      */
     renderPlaceHolder(msg){
+      
         return <div style={{display:'flex',
                 flexDirection:'column',
                 justifyContent:'center',
                 alignItems:'center',
                 width:this.props.parentWidth,
                 height:this.props.parentHeight,
-                }}>
+                }}
+                >
                    {msg}
                 </div>
     }
