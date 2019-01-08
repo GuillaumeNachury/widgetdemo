@@ -1,6 +1,6 @@
 # widgetdemo
-!(http://securilabs.free.fr/WTTJDemoMobile.png)
-!(http://securilabs.free.fr/WTTJDemo.png)
+![](http://securilabs.free.fr/WTTJDemoMobile.png)
+![](http://securilabs.free.fr/WTTJDemo.png)
 ### Desciption
 Le code de ce repo contient la réalisation d'un composant permettant l'affichage d'une grille / mosaïque de miniatures AINSI que son utilisation dans un contexte d'application React + Redux.
 Le composant/widget (cf. `/src/component/MozaiGrid`) a été construit comme un composant standlone sans logique interne et nécessitant d'etre piloté depuis l'exterieur. L'idée était de créer un composant assez gnérique, non fortement couplé, pour etre utilisé dans plusieurs contexts différents et piloté par n'importe quel autre composant.
