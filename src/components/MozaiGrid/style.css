@@ -1,21 +1,49 @@
-.cellThumb{
-    cursor: pointer;
-    filter:grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%); 
-    -o-filter: grayscale(100%); 
-    transition: all 1000ms;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size:cover;
+.ImageCellHover{
+    pointer-events: none;
+   color:#00c29a;
+   position: absolute;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: all 300ms;
+}
+.Cell:hover .ImageCellHover{
+     opacity:1;
+ }
+
+@media (max-width: 600px) {
+    .cellThumb{
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size:cover;
+    }
+
+    .ImageCellHover{
+        opacity:1;
+    }
+
 }
 
-.cellThumb:hover{
-    transform: scale(1.02);
-    filter:grayscale(0);
-    -webkit-filter: grayscale(0);
-    -moz-filter: grayscale(0); 
-    -o-filter: grayscale(0); 
+@media (min-width: 600px) {
+    .cellThumb{
+        cursor: pointer;
+        filter:grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%); 
+        -o-filter: grayscale(100%); 
+        transition: all 1000ms;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size:cover;
+    }
+
+    .cellThumb:hover{
+        transform: scale(1.02);
+        filter:grayscale(0);
+        -webkit-filter: grayscale(0);
+        -moz-filter: grayscale(0); 
+        -o-filter: grayscale(0); 
+    }
 }
 
 .ThumbCaption{
@@ -52,15 +80,3 @@ margin-right: 10px;
 }
 
 
-.ImageCellHover{
-    pointer-events: none;
-   color:#00c29a;
-   position: absolute;
-   align-items: center;
-   justify-content: center;
-   opacity: 0;
-   transition: all 300ms;
-}
-.Cell:hover .ImageCellHover{
-     opacity:1;
- }

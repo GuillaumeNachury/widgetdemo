@@ -15,8 +15,22 @@
   background-color:#31333b;
 }
 
+
+
+
+@media (max-width: 600px) {
+  .AppContent {
+    width: 100%;
+  }
+
+
+}
+
+
 .AppContent h1{
   color:white;
+  text-align: center;
+  padding: 10px;
 }
 
 .AppContent .Paragraph{

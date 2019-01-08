@@ -38,6 +38,7 @@
  *  The component can also display a progress bar (cf. MozaiProgress.js) at the bottom
  *  via the 'showProgressBar' prop
  * 
+ *  You can pass a 'isMobile' prop to switch some style/UX for a better mobile experience
  * 
  * (1) cf. : Rezier.js
  * (2) Main root div in MozaiGrid.js
@@ -161,7 +162,8 @@ MozaiGrid.propTypes={
     currentSnap:PropTypes.number,
     data:PropTypes.array.isRequired,
     cellOrganisation:PropTypes.oneOf([CellOrganisation.COLUMN, CellOrganisation.ROW]),
-    showProgressBar:PropTypes.bool
+    showProgressBar:PropTypes.bool,
+    isMobile:PropTypes.bool
 }
 
 MozaiGrid.defaultProps = {

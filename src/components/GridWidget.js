@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import MozaiGrid, {CellOrganisation} from './MozaiGrid';
 import {getCompanyData} from './../actions' ;
 
+import {mobileDetector} from '../utils/MobileDetector';
+
 class GridWidget extends React.Component{
 
     componentDidMount(){
@@ -20,9 +22,10 @@ class GridWidget extends React.Component{
         return  <MozaiGrid rows={gridParams.rows} cols={gridParams.cols} 
                     currentSnap={snapPosition}
                     data={companyData} 
-                    style={{...this.props.style}} 
+                    style={{...this.props.style, height:this.props.isMobile ? this.props.mobileHeight : this.props.height}} 
                     cellOrganisation={CellOrganisation.COLUMN}
                     showProgressBar = {true}
+                    isMobile = {this.props.isMobile}
                     />
                 }
 
@@ -38,4 +41,4 @@ function mapStateToProps(store, ownProps){
     }
   }
 
-export default connect(mapStateToProps, {getCompanyData})(GridWidget);
+export default connect(mapStateToProps, {getCompanyData})(mobileDetector(GridWidget));

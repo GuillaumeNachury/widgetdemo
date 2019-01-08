@@ -42,7 +42,7 @@ const reducer = spy((state, action)=>{
     }
 
 
-}, true);
+}, false);
 
 
 /**
