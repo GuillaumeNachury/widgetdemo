@@ -24,6 +24,8 @@ Quelques HOC utilitaires ont été utilisés pour simplifier la phase de dévelo
  
 Plus de détails concernant la structuration et l'utilisation du composant `MozaiGrid` sont décrits dans le fichier `/src/components/MozaiGrid/index.js` 
 
+### Pré requis
+Un machine avec yarn (https://yarnpkg.com/lang/en/) et Node.js (https://nodejs.org/en/)
 
 ### Usage
 __Comme évoqué précédemment, une source de données doit etre mise en place. Le serveur utilisé pour le developpement, basé sur nodeJS, est disponible ici. (https://github.com/GuillaumeNachury/widgetdemoserver)__
@@ -43,6 +45,11 @@ Pour réaliser un build final :
 ### Dépendances
 J'ai essayé de réduire au maximum les dépendances externes mais certaines ont été utilisées uniquement pour des questions de simplification du dev. Elles pourrons facilement etre enlevées à l'avenir. Je pense notamment à `react-icons-kit` utilisée ici que pour 3 icons :(
 
+### Erreurs possibles
+ * Si le composant affiche "Loading data..." cela signifie que les données n'ont pas pu etre récupérées depuis le serveur. => vérifier que les constantes de connexion soient correctes (cf. `/src/constants/`)
+
+ ### Fonctionnalités non ou partiellement implémentée
+ La version actuelle du composant ne permet d'utiliser que l'organisation des miniature en colonne. Concretement il n'est possible d'utiliser que ` cellOrganisation={CellOrganisation.COLUMN}` . pour plus de détails sur cette propriété cf. commentaire de `/src/components/MozaiGrid/index.js`
 
 
 ### TODOS
