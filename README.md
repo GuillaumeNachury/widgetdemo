@@ -5,12 +5,12 @@
 - [x] Progress bar feature
 - [x] External scroll control
 - [x] Query string to control UI
-- [ ] Manage cell types
-- [ ] hover effect on grid cells
+- [x] Manage cell types
+- [x] hover effect on grid cells
 - [x] setup Redux
-- [ ] Load remote data
+- [x] Load remote data
 - [ ] Add mobile mod
-- [ ] Setup style
+- [x] Setup style
 - [ ] Create some unit tests
 - [ ] Clean / comment the code 
 - [ ] Try to finds a better name for the grid component :)
